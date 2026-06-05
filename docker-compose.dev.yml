@@ -1,0 +1,33 @@
+services:
+  crazy-crew:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: crazy-crew-dev
+    restart: unless-stopped
+    ports:
+      - "3000:3000"   # Express API
+      - "5173:5173"   # Vite dev server (use this in the browser)
+    volumes:
+      - ./data:/data
+      - ./server:/app/server
+      - ./client/src:/app/client/src
+      - ./client/public:/app/client/public
+      - ./client/index.html:/app/client/index.html
+      - ./client/vite.config.js:/app/client/vite.config.js
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - TZ=${TZ:-America/Los_Angeles}
+    networks:
+      local_macvlan:
+        ipv4_address: 10.1.2.113
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.crazy-crew.rule=Host(`crazy-crew.minituff.net`)"
+      - "traefik.http.services.crazy-crew.loadbalancer.server.port=5173"
+
+networks:
+  local_macvlan:
+    external: true
+    name: local_macvlan

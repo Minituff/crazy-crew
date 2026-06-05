@@ -1,0 +1,21 @@
+services:
+  crazy-crew:
+    build: .
+    container_name: crazy-crew
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/data
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - TZ=${TZ:-America/Los_Angeles}
+    networks:
+      local_macvlan:
+        ipv4_address: 10.1.2.112
+
+networks:
+  local_macvlan:
+    external: true
+    name: local_macvlan

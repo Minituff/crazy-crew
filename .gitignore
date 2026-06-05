@@ -1,0 +1,5 @@
+node_modules/
+client/dist/
+data/vapid_keys.json
+data/push_subscriptions.json
+.env
