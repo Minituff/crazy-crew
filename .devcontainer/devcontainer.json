@@ -1,0 +1,38 @@
+{
+  "name": "Crazy Crew - Cloudflare Pages",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+  "forwardPorts": [
+    5173,
+    4321,
+    3000,
+    8788
+  ],
+  "portsAttributes": {
+    "5173": { "label": "Vite Dev Server" },
+    "4321": { "label": "Astro Dev Server" },
+    "3000": { "label": "Dev Server" },
+    "8788": { "label": "Wrangler Pages Dev" }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "cloudflare.cloudflare-workers-bindings"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+  "postCreateCommand": "npm install 2>/dev/null || true",
+  "remoteUser": "node"
+}
