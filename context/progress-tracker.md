@@ -1,8 +1,13 @@
 # Progress Tracker — Crazy Crew
 
-## Current Status: Push Module Extracted
+## Current Status: Staycation 2026 is the active trip
 
-Last updated: 2026-06-05
+Last updated: 2026-07-25
+
+New trip added (2026-07-25):
+- `data/itineraries/staycation-2026.md` created — Staycation 2026, Jul 29 – Aug 2 2026 (Phoenix/Prescott/Peoria, AZ), `current: true`
+- `bear-2026.md` `current` flag flipped to `false` (trip already concluded Jul 3–8; only one trip should carry `current: true` at a time)
+- Day headings use exact `## {Weekday}` format (no date suffix) per the push-scheduler contract, unlike `bear-2026.md` which has `## Thursday June 4th`-style headings
 
 Push module extraction (2026-06-05):
 - All push concerns moved from `server/index.js` into `server/push.js`
@@ -76,7 +81,8 @@ Context docs (2026-06-05):
 - [x] `trips.js` — empty custom page registry with commented example
 
 ### Data
-- [x] `data/itineraries/bear-2026.md` — sample Big Bear 2026 itinerary, `current: true`
+- [x] `data/itineraries/bear-2026.md` — Big Bear 2026 itinerary, `current: false` (concluded)
+- [x] `data/itineraries/staycation-2026.md` — Staycation 2026 itinerary, `current: true` (active default)
 - [x] `data/custom-trips.json` — empty array
 
 ### Docs
